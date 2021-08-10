@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+</head>
+
+<style>
+  .image_slideshow{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+   animation-timing-function: ease-in-out;
+    
+    animation-name: slideshow;
+    animation-duration: 25s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    display: flex;
+}
+@keyframes slideshow {
+    0%{
+        background-image: url(image1.jpg);
+    }
+    20%{
+        background-image: url(image2.jpg);
+    }
+    40%{
+        background-image: url(image3.jpg);
+    }
+    60%{
+        background-image: url(image4.jpg);
+    }
+    80%{
+        background-image: url(image5.jpg);
+    }
+    100%{
+        background-image: url(image1.jpg);
+    }
+}
+</style>
+<style>body {
+   
+    text-align: center;
+   
+    padding-top:3em;
+  }
+
+  
+  * { color:rgb(32, 29, 29); text-decoration: none;}</style>
+  <script>
+      var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 150 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+  </script>
+<body>
+  
+    <div class="all_body">
+      
+<h1>
+    <a href="" class="typewrite" data-period="2000" data-type='[ "Welcome to the world of E-learning.", "We serve you the best quality education.", "Get help from professionals.", "Get, free notes on each and every topic in PDF Format. " ]'>
+      <span class="wrap"></span>
+    </a>
+  </h1>
+  <div class="image_slideshow">
+      
+      
+</div>
+  
+        <div class="sidebar">
+            <div class="logo-details" >
+              
+                <div class="logo_name" >E-Leraning</div>
+                <i class="material-icons" id="btn" >chrome_reader_mode</i> 
+            </div>
+            <ul class="nav-list">
+              <li>
+                <a href="#">
+                  <i class="material-icons">home</i>
+                  <span class="links_name">Home</span>
+                </a>
+                 <span class="tooltip">Home</span>
+              </li>
+              <li>
+               <a href="C:\Users\suraj\OneDrive\Desktop\our final\teste.html">
+                <i class="material-icons">library_books</i>
+                 <span class="links_name">Tutorials</span>
+               </a>
+               <span class="tooltip">Tutorials</span>
+             </li>
+             <li>
+               <a href="file:///C:/Users/suraj/OneDrive/Desktop/our%20final/video%20tutorials.html">
+                <i class="material-icons">ondemand_video</i>
+                 <span class="links_name">Video Tutorials</span>
+               </a>
+               <span class="tooltip">Video Tutorials</span>
+             </li>
+             <li>
+               <a href="#">
+                <i class="material-icons">edit</i>
+                 <span class="links_name">Quiz</span>
+               </a>
+               <span class="tooltip">Quiz</span>
+             </li>
+             <li>
+               <a href="#">
+                <i class="material-icons">contact_mail</i>
+                 <span class="links_name">Contact Us</span>
+               </a>
+               <span class="tooltip">Contact Us</span>
+             </li>
+             <li>
+             <li class="profile">
+                 <div class="profile-details">
+                   <img src="logo.png" alt="profileImg">
+                   <div class="name_job">
+                     <div class="name">Suraj Kumar</div>
+                     <div class="job">Web designer</div>
+                   </div>
+                 </div>
+                 <i class='bx bx-log-out' id="log_out" ></i>
+             </li>
+            </ul>
+          </div>
+          <section class="home-section">
+              <div class="text"></div>
+              <h1>Recommended books for You.</h1>
+              <br><br>
+          <div class="quotes">
+        <button >New to JAVA! Then, start with our JAVA Beginners tutorial book. <br><br>
+        <a href="https://drive.google.com/file/d/1xjgWU8yCSkAgZ3l1bfKyOTqeqtLod4Gp/view?usp=sharing" download >Download</a>
+      </button>
+      <button >A Complete reference to HTML basics. Download the PDF file for free.<br><br>
+        <a href="https://drive.google.com/file/d/1bi1GPWRKOTkwEp0BP7nUZF735RBdrIcE/view?usp=sharing">Download</a>
+      </button>
+        <button >A Complete reference to Java script. Download the PDF file for free.<br><br>
+          <a href="https://drive.google.com/file/d/1Su13bH5MJGNSPDr8KVkqrhAc20v11MTs/view?usp=sharing">Download</a>
+        </button>
+        <button >The all new CSS reference Book is Here. Download now, for free.<br><br>
+          <a href="https://drive.google.com/file/d/1QCJehEdtsB11AaCHtY8QabMGwb0AYt09/view?usp=sharing">Download</a>
+        </button>
+       
+        <br>
+        
+        
+          <div class="quotes" id="extraquotes">
+            <br>
+            <button >Learn Complete java within a few weeks by downloading our JAVA tutorials Book. <br><br>
+              <a href="">Download</a>
+            </button>
+            <button >A full giude for the icons library . Download now, for free.<br><br>
+              <a href="">Download</a>
+            </button>
+            <button > How to use HTML DOM for you website.Download the book now. <br><br>
+              <a href="">Download</a>
+            </button>
+            <button >A complete tutorial for C and C++ in one book. Download Now.<br><br>
+              <a href="">Download</a>
+            </button>
+          </div>
+          
+          </div>
+          <br>
+          <div class="quotes_button">
+          <button onclick="displayextraquotes()"><i id="arrowicon" class="material-icons">arrow_downward</i>
+          </button>
+        </div>
+    </div>
+    
+   
+</body>
+<style>
+  #extraquotes {
+    display: none;
+  }
+  .quotes_button button{
+    font-size: 40px;
+    width: 6%;
+    border: none;
+    background-color: #c7c6d3d8;
+    
+   
+  }
+  .quotes button{ 
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: #1d1b31;
+    color: #E4E9F7;
+    max-width: 20%;
+    min-height: 200px;
+  
+  }
+  .quotes a{
+    color: #E4E9F7;
+    background-color: rgb(63, 218, 33);
+    padding: 5px 5px 5px 5px;
+    border-radius: 10%
+  }
+
+</style>
+<style>
+    /* Google Font Link */
+@import url('<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #11101D;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open{
+  width: 250px;
+}
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+  opacity: 1;
+}
+.sidebar .logo-details #btn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+  text-align: right;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+  display: none;
+}
+
+.sidebar.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+.sidebar .bx-search{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar.open .bx-search:hover{
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar .bx-search:hover{
+  background: #FFF;
+  color: #11101d;
+}
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #11101D;
+}
+.sidebar li a:hover{
+  background: #FFF;
+}
+.sidebar li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #11101D;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.sidebar.open li.profile{
+  width: 250px;
+}
+.sidebar li .profile-details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .job{
+  font-size: 12px;
+}
+.sidebar .profile #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1d1b31;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+.home-section{
+  position: relative;
+  background: #E4E9F7;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.sidebar.open ~ .home-section{
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.home-section .text{
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px
+}
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+</style>
+<script>
+  function displayextraquotes(){
+    x=document.getElementById("extraquotes");
+    y=document.getElementById("arrowicon");
+    if(x.style.display==="none"){
+      x.style.display="block";
+      y.innerHTML="arrow_upward"
+
+    }
+    else{
+      x.style.display="none";
+      y.innerHTML="arrow_downward";
+    }
+    
+  }
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+let searchBtn = document.querySelector(".bx-search");
+
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();//calling the function(optional)
+});
+
+searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+  sidebar.classList.toggle("open");
+  menuBtnChange(); //calling the function(optional)
+});
+
+// following are the code to change sidebar button(optional)
+function menuBtnChange() {
+ if(sidebar.classList.contains("open")){
+   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+ }else {
+   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+ }
+}
+</script>
+</html>
